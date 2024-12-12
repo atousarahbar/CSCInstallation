@@ -41,6 +41,37 @@ In Intune, on the far left menu, navigate to **Devices --> macOS --> Shell scri
 * Max number of times to retry if script fails: **3 times**
 
 In Assignments, select your desired user/device assignment and click Create.
+
+
+**How to Configure a Silent Install for System Extensions and ManagedLoginItems:**
+
+Next, we'll need to configure and allow Cisco Secure Client's required System Extensions in order for Cisco Secure Client with Umbrella module to run correctly without user interactions. This step in combination with configuring **ManagedLoginItems** will allow Cisco Secure Client with Umbrella module to launch upon device startup.
+
+[Cisco Secure Client Changes Related to macOS 11 (And Later)](https://www.cisco.com/c/en/us/td/docs/security/vpn_client/anyconnect/Cisco-Secure-Client-5/admin/guide/b-cisco-secure-client-admin-guide-5-1/macos11-on-ac.html#Cisco_Reference.dita_129105c0-2c8f-4635-9f2e-89d769ded6d4)
+
+
+
+
+On the far left menu, browse to **Devices --> macOS --> Configuration profiles** and create the following policies to silently enable the required System Extensions in order for Cisco Secure Client with Umbrella module to run correctly without user interactions:
+
+**Create --> New Policy** --> Profile type: **Settings catalog** --> Name: **ManagedLoginItems** --> Add Settings --> search for Managed Login Items --> select **Login > Service Management - Managed Login Items** --> expand the rules at the bottom and select **Comment, Rule Type, and Rule Value.**
+
+Close the right side panel and click + **Edit Instance** and enter the following values, removing the last row for "Team Identifiers":
+
+
+* Comment: **Cisco Secure Client**
+* Rule Type: **Bundle Identifier Prefix**
+* Rule Value: **com.cisco.secureclient**
+* Team Identifier: **DE8Y96K9QP**
+
+Then, we'll be using the MDM configuration profile to load both the Cisco Secure Client system and the kernel extensions, including the system extension's content filter component.
+
+Navigate to [Cisco Secure Client Changes Related to macOS 11 (And Later)](https://www.cisco.com/c/en/us/td/docs/security/vpn_client/anyconnect/Cisco-Secure-Client-5/admin/guide/b-cisco-secure-client-admin-guide-5-1/macos11-on-ac.html#Cisco_Reference.dita_129105c0-2c8f-4635-9f2e-89d769ded6d4) and copy the sample XML.
+
+Navigate back to **Configuration profiles --> Create --> New Policy** --> Profile type: **Templates --> Custom --> Create** --> Name: **System Extensions**--> Custom Configuration profile name: **System Extensions** --> Deployment channel: **Device channel**. Upload the file you saved from the previous step:
+
+In Assignments, select your desired user/device assignment and click Create.
+
 Then, On the far left menu, navigate to Devices --> macOS and click on one of your macOS device(s) that is suppose receive the Cisco Secure Client deployment. In Overview, click Sync so your desired macOS device(s) can pick up the changes. You may track the progress by navigating to Device configuration on the same page and see if the extensions we've configured has been pushed successfully.
 
 **Deploying the Cisco Umbrella Root Certificate:**
