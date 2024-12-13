@@ -8,26 +8,21 @@ This is a step-by-step guide on how to deploy Cisco Secure Client to your macOS 
 
 
 **Procedure**
-**Crafting the Package (PKG):**
+**Deployment Options for Cisco Secure Client on macOS via Intune:**
+
 1) Download the Cisco Secure Client disk image (DMG) from your Umbrella dashboard, under Deployments --> Roaming Computers --> top right: Roaming Client --> Pre-Deployment Package --> macOS.
 2) Follow our documentation to craft your disk image (DMG) until you've reached Step 5. This is done so you can create the install_choices.xml to enable/disable the modules you need for your environment, with ACTransforms.xml being optional to hide the VPN module UI.
 3) Eject the disk image you've just crafted. One way to verify the disk image has been crafted properly is by double-clicking "csc-writeable.dmg" and then verify ACTransforms.xml, install_choices.xml, and OrgInfo.json are still in it's respective place. Place this disk image in a central location that your macOS devices can access. Your NAS or shared URL should contain the DMG file. You would need to drag this file from the above disk image (DMG) into your NAS or shared folder.
 
-There are several options available to deploy the Cisco Secure Client via Intune for macOS:
-
 1) MacOS app (DMG):
-2) Deploying via PKG (Package)
-3) Deploying via Script (Custom Script)
 
-**1) MacOS app (DMG):**
+Important note: The DMG app option is not supported in Intune for macOS deployments. DMG files are commonly used for macOS applications, but they are not packaged in a format that Intune directly supports for app deployment. Inside a DMG file, the application is not in the .app format directly. You may notice the following error under Installation Status: Failed. This error occurs because the DMG contains a .pkg file instead of an .app file. Therefore, you can proceed to the next option, macOS app (PKG).
 
-The DMG app option is not supported in Intune for macOS deployments. DMG files are commonly used for macOS applications, but they are not packaged in a format that Intune directly supports for app deployment. Inside a DMG file, the application is not in the .app format directly. You may notice an error under Installation Status: Failed. This error occurs because the DMG contains a .pkg file instead of an .app file. 
+2) MacOS app (PKG):
 
-**2) MacOS app (PKG):**
+The macOS app (PKG) deployment method in Intune is used to distribute and install the .pkg file on macOS devices. 
 
-The macOS app (PKG) deployment method in Intune is used to distribute and install the .pkg file on macOS devices. 
-
-Important note: This deployment method will install ALL modules included in the package by default. Therefore, you can use the third option Deploying via Script (Custom Script), which involves using a script in Intune to customize the installation process, allowing you to control which modules are installed during deployment. 
+Important note: This deployment method will install ALL modules included in the package by default. Therefore, you can use the third option Deploying via Script (Custom Script), which involves using a script in Intune to customize the installation process, allowing you to control which modules are installed during deployment. 
 
 **3) Deploying via Script (Custom Script)**
 
