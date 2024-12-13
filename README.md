@@ -29,7 +29,9 @@ Important note: This deployment method will install ALL modules included in the 
 
 **3) Deploying via Script (Custom Script)**
 
-Using a custom script, we'll utilize a Bash script to execute the installation command for the Cisco Secure Client with the Umbrella module, including the accepted parameters from the install_choices.xml file.Download the bash shell script from this GitHub Repo. Modify line 6 and line 10 to the respective version you're deploying. On line 12, modify the file path to point directly to the disk image (DMG) file.
+Using a custom script, we'll utilize a Bash script to execute the installation command for the Cisco Secure Client with the Umbrella module, including the accepted parameters from the install_choices.xml file.
+
+Download the bash shell script from this Github Repo. Modify line 6 and line 10 to the respective version you're deploying. On line 12, modify the file path to point directly to the disk image (DMG) file.
 
 In Intune, on the far left menu, navigate to **Devices --> macOS --> Shell scripts --> Add**. Give it a unique name. Upload the bash shell script downloaded from the previous step and ensure the following values are configured:
 
@@ -46,7 +48,6 @@ In Assignments, select your desired user/device assignment and click Create.
 Next, we'll need to configure and allow Cisco Secure Client's required System Extensions in order for Cisco Secure Client with Umbrella module to run correctly without user interactions. This step in combination with configuring **ManagedLoginItems** will allow Cisco Secure Client with Umbrella module to launch upon device startup.
 
 [Cisco Secure Client Changes Related to macOS 11 (And Later)](https://www.cisco.com/c/en/us/td/docs/security/vpn_client/anyconnect/Cisco-Secure-Client-5/admin/guide/b-cisco-secure-client-admin-guide-5-1/macos11-on-ac.html#Cisco_Reference.dita_129105c0-2c8f-4635-9f2e-89d769ded6d4)
-
 
 
 
