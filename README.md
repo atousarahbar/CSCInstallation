@@ -1,3 +1,6 @@
+Please reference this KBA for pictured instructions: [How to deploy Cisco Secure Client via Intune (macOS)](https://support.umbrella.com/hc/en-us/articles/32940834196884-How-to-deploy-Cisco-Secure-Client-via-Intune-macOS)
+
+
 **Bash Shell script to deploy Cisco Secure Client 5 to MacOS devices via Intune**
 
 This is a step-by-step guide on how to deploy Cisco Secure Client to your macOS devices via Intune. It is done with the assumption that your macOS device is already Managed by Intune. If you need to MDM your macOS device, please follow Microsoft's documentation. 
