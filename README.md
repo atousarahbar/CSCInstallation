@@ -19,7 +19,7 @@ This is a step-by-step guide on how to deploy Cisco Secure Client to your macOS 
 **Deployment Options for Cisco Secure Client on macOS via Intune:**
 1) MacOS app (DMG):
 
-Important note: The DMG app option is not supported in Intune for macOS deployments. DMG files are commonly used for macOS applications, but they are not packaged in a format that Intune directly supports for app deployment. Inside a DMG file, the application is not in the .app format directly. You may notice the following error under Installation Status: Failed. This error occurs because the DMG contains a .pkg file instead of an .app file. Therefore, you can proceed to the next option, macOS app (PKG).
+Important note: The DMG app option is not supported in Intune for macOS deployments. DMG files are commonly used for macOS applications, but they are not packaged in a format that Intune directly supports for app deployment. Inside a DMG file, the application is not in the .app format directly. You may notice the following error **"The DMG file doesn't contain any supported app. It must contain at least one .app file"** under **Installation Status: Failed**. This error occurs because the DMG contains a .pkg file instead of an .app file. Therefore, you can disregard the option using the DMG app option in Intune and proceed to the next option, macOS app (PKG).
 
 2) MacOS app (PKG):
 
@@ -27,7 +27,7 @@ The macOS app (PKG) deployment method in Intune is used to distribute and instal
 
 Important note: This deployment method will install ALL modules included in the package by default. Therefore, you can use the third option Deploying via Script (Custom Script), which involves using a script in Intune to customize the installation process, allowing you to control which modules are installed during deployment. 
 
-**3) Deploying via Script (Custom Script)**
+**3) Deploying via Script (custom script)**
 
 Using a custom script, we'll utilize a Bash script to execute the installation command for the Cisco Secure Client with the Umbrella module, including the accepted parameters from the install_choices.xml file.
 
